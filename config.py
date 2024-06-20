@@ -1,10 +1,20 @@
+    # Don't Remove Credit Tg - @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+
+
+import re
+import os
+from os import getenv, environ
+from Script import script 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Don't Remove Credit Tg - @VJ_Botz
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
 # Ask Doubt on telegram @KingVJ01
 
-import os
-import re
-from os import environ, getenv
 
 id_pattern = re.compile(r'^.\d+$')
 def is_enabled(value, default):
@@ -15,59 +25,82 @@ def is_enabled(value, default):
     else:
         return default
 
-class Config(object):
-    # Bot Information 
-    TECH_VJ_BOT_TOKEN = os.environ.get("TECH_VJ_BOT_TOKEN", "")
-    TECH_VJ_BOT_USERNAME = os.environ.get("TECH_VJ_BOT_USERNAME", "") # Bot username without @.
-    
-    # The Telegram API things
-    TECH_VJ_API_ID = int(os.environ.get("TECH_VJ_API_ID", ""))
-    TECH_VJ_API_HASH = os.environ.get("TECH_VJ_API_HASH", "")
-    
-    # the download location, where the HTTP Server runs
-    TECH_VJ_DOWNLOAD_LOCATION = "./DOWNLOADS"
-    
-    # Telegram maximum file upload size
-    TECH_VJ_MAX_FILE_SIZE = 50000000
-    TECH_VJ_TG_MAX_FILE_SIZE = 4194304000 #2097152000
-    TECH_VJ_FREE_USER_MAX_FILE_SIZE = 50000000
-    
-    # chunk size that should be used with requests
-    TECH_VJ_CHUNK_SIZE = int(128)
-    # default thumbnail to be used in the videos
-    
-    # proxy for accessing youtube-dl in GeoRestricted Areas
-    # Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061
-    TECH_VJ_HTTP_PROXY = ""
-    
-    # maximum message length in Telegram
-    TECH_VJ_MAX_MESSAGE_LENGTH = 4096
-    
-    # set timeout for subprocess
-    TECH_VJ_PROCESS_MAX_TIMEOUT = 3600
-    
-    # your telegram account id
-    TECH_VJ_OWNER_ID = int(os.environ.get("TECH_VJ_OWNER_ID", "")) 
-    TECH_VJ_SESSION_NAME = "VJ-URL-UPLOADER-BOT"
-    
-    # database uri (mongodb)
-    TECH_VJ_DATABASE_URL = os.environ.get("TECH_VJ_DATABASE_URL", "")
-    TECH_VJ_MAX_RESULTS = "50"
+# Don't Remove Credit Tg - @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+      
+# Owner Information
+API_ID = int(environ.get("API_ID", "28243586"))
+API_HASH = environ.get("API_HASH", "4022d5686b9b7a7cf8891205921a0ab3")
+ADMINS = int(environ.get("ADMINS", "5340652544"))
 
-    # channel information
-    TECH_VJ_LOG_CHANNEL = int(os.environ.get("TECH_VJ_LOG_CHANNEL", "")) # your log channel id and make bot admin in log channel with full right 
+# Database Information
+CLONE_DB_URI = environ.get("CLONE_DB_URI", "mongodb+srv://jyotimaurya891824:2B88eQ3wVDatM7bp@cluster0.axvyci8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+CDB_NAME = environ.get("CDB_NAME", "cluster0")
+DB_URI = environ.get("DB_URI", "mongodb+srv://jyotimaurya891824:j8dK84kIE0HrDJTH@cluster0.uwkm5id.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DB_NAME = environ.get("DB_NAME", "cluster0")
+
+# Don't Remove Credit Tg - @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+
+# Bot Information
+BOT_TOKEN = environ.get("BOT_TOKEN", "7456518146:AAEY0de8VB537DSXzXMiWhC3CvpFjqecQ9A")
+BOT_USERNAME = environ.get("BOT_USERNAME", "MR_SUNG_PB_BOT") # your bot username without @
+PICS = (environ.get('PICS', 'https://telegra.ph/file/f69ffb788e27be2d60e84.jpg https://telegra.ph/file/531109a51df28b01d5822.jpg https://telegra.ph/file/4ff2445eb814758548b52.jpg')).split() # Bot Start Picture
+
+# Auto Delete Information
+AUTO_DELETE = int(environ.get("AUTO_DELETE", "30")) # Time in Minutes
+AUTO_DELETE_TIME = int(environ.get("AUTO_DELETE_TIME", "1800")) # Time in Seconds
+
+# Channel Information
+LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "-1002057330647"))
+FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '-1002208467226')).split()]
+
+# Don't Remove Credit Tg - @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+
+# File Caption Information
+CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", f"{script.CAPTION}")
+BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
+
+# Enable - True or Disable - False
+PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
+PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
+
+# Don't Remove Credit Tg - @VJ_Botz
+# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
+# Ask Doubt on telegram @KingVJ01
+
+# File Stream Config
+class Var(object):
+    MULTI_CLIENT = False
+    name = str(getenv('name', 'filetolinkvjbot'))
+    SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
+    WORKERS = int(getenv('WORKERS', '4'))
+    BIN_CHANNEL = int(getenv('BIN_CHANNEL', '-1002057330647'))
+    PORT = int(getenv('PORT', 8080))
+    BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
+    PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
+    NO_PORT = bool(getenv('NO_PORT', False))
+    APP_NAME = None
+    if 'DYNO' in environ:
+        ON_HEROKU = True
+        APP_NAME = str(getenv('APP_NAME'))
     
-    # if you want force subscribe then give your channel id below else leave blank
-    tech_vj_update_channel = environ.get('TECH_VJ_UPDATES_CHANNEL', '') # your update channel id and make bot admin in update channel with full right
-    TECH_VJ_UPDATES_CHANNEL = int(tech_vj_update_channel) if tech_vj_update_channel and id_pattern.search(tech_vj_update_channel) else None  
-    
-    # Url Shortner Information 
-    TECH_VJ = bool(environ.get('TECH_VJ', True)) # Set False If you want shortlink off else True
-    TECH_VJ_URL = environ.get('TECH_VJ_URL', 'moneykamalo.com') # your shortlink url domain or url without https://
-    TECH_VJ_API = environ.get('TECH_VJ_API', '0eefb93e1e3ce9470a7033115ceb1bad13a9d674') # your url shortner api
-    TECH_VJ_TUTORIAL = os.environ.get("TECH_VJ_TUTORIAL", "https://t.me/How_To_Open_Linkl")
+    else:
+        ON_HEROKU = False
+    FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
+    HAS_SSL=bool(getenv('HAS_SSL',False))
+    if HAS_SSL:
+        URL = "https://mr-itachi.onrender.com/"
+    else:
+        URL = "https://mr-itachi.onrender.com/"
+
 
 
 # Don't Remove Credit Tg - @VJ_Botz
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
 # Ask Doubt on telegram @KingVJ01
+    
